@@ -1,8 +1,44 @@
+.cardCreation {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+}
+
+.cardForm {
+  width: 50%;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  margin-left: 10%;
-  max-width: 20%;
+  padding-left: 10%;
+}
+
+.preview {
+  background-color: #023031;
+  width: 50%;
+}
+
+.preview h2 {
+  color: white;
+  text-align: center;
+}
+
+.cardPreview {
+  background-color: #036b52;
+  border: 8px white solid;
+  border-radius: 5px;
+  color: white;
+  height: 75%;
+  margin: auto;
+  max-height: 508px;
+  max-width: 330px;
+  text-align: center;
+  width: 45%;
+}
+
+.cardPreview img {
+  height: 40%;
 }
 
 button {
