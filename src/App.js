@@ -13,7 +13,10 @@ class App extends React.Component {
     imageInput: '',
     rareInput: '',
     trunfoInput: false,
+    cardList: [],
   }
+
+  initialState = this.state;
 
   handleChange = ({ target: { id, value, checked } }) => {
     if (id !== 'trunfoInput') {
@@ -22,6 +25,16 @@ class App extends React.Component {
       this.setState({ [id]: checked });
     }
   };
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { cardList } = this.state;
+    const card = this.state;
+    delete card.cardList;
+    this.setState(this.initialState);
+    this.setState({ rareInput: 'normal' });
+    this.setState({ cardList: [...cardList, card] });
+  }
 
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
@@ -63,17 +76,21 @@ class App extends React.Component {
           cardTrunfo={ trunfoInput }
           isSaveButtonDisabled={ isButtonDisabled() }
           onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card
-          cardName={ nameInput }
-          cardDescription={ descriptionInput }
-          cardAttr1={ attr1Input }
-          cardAttr2={ attr2Input }
-          cardAttr3={ attr3Input }
-          cardImage={ imageInput }
-          cardRare={ rareInput }
-          cardTrunfo={ trunfoInput }
-        />
+        <div className="preview">
+          <h2>Pré-visualização</h2>
+          <Card
+            cardName={ nameInput }
+            cardDescription={ descriptionInput }
+            cardAttr1={ attr1Input }
+            cardAttr2={ attr2Input }
+            cardAttr3={ attr3Input }
+            cardImage={ imageInput }
+            cardRare={ rareInput }
+            cardTrunfo={ trunfoInput }
+          />
+        </div>
       </div>
     );
   }

@@ -24,7 +24,7 @@ form {
   text-align: center;
 }
 
-.cardPreview {
+.card {
   background-color: #036b52;
   border: 8px white solid;
   border-radius: 5px;
@@ -37,7 +37,7 @@ form {
   width: 45%;
 }
 
-.cardPreview img {
+.card img {
   height: 40%;
 }
 
