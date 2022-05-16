@@ -6,6 +6,7 @@ class Form extends React.Component {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, /* hasTrunfo, */
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+
     return (
       <div className="cardForm">
         <form>
@@ -32,33 +33,39 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr1Input">
-            Attr01&nbsp;&nbsp;
+            Vida&nbsp;&nbsp;
             <input
               data-testid="attr1-input"
               id="attr1Input"
               type="number"
               value={ cardAttr1 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
             />
           </label>
           <label htmlFor="attr2Input">
-            Attr02&nbsp;&nbsp;
+            Ataque&nbsp;&nbsp;
             <input
               data-testid="attr2-input"
               id="attr2Input"
               type="number"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
             />
           </label>
           <label htmlFor="attr3Input">
-            Attr03&nbsp;&nbsp;
+            Energia&nbsp;&nbsp;
             <input
               data-testid="attr3-input"
               id="attr3Input"
               type="number"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
             />
           </label>
           <label htmlFor="imageInput">
@@ -83,7 +90,14 @@ class Form extends React.Component {
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
-              <option selected hidden disabled>Selecione uma raridade</option>
+              <option
+                value=""
+                defaultValue
+                hidden
+                disabled
+              >
+                Selecione uma raridade
+              </option>
             </select>
           </label>
           <label htmlFor="trunfoInput">
@@ -104,7 +118,6 @@ class Form extends React.Component {
             onClick={ onSaveButtonClick }
           >
             Salvar
-
           </button>
         </form>
       </div>
