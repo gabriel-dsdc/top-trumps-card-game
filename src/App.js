@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
+import Deck from './components/Deck';
 
 class App extends React.Component {
   state = {
@@ -43,7 +44,7 @@ class App extends React.Component {
 
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
-      attr3Input, imageInput, rareInput, trunfoInput, hasTrunfo } = this.state;
+      attr3Input, imageInput, rareInput, trunfoInput, hasTrunfo, cardList } = this.state;
 
     const isButtonDisabled = () => {
       let isSaveButtonDisabled = true;
@@ -69,24 +70,9 @@ class App extends React.Component {
     };
 
     return (
-      <div className="cardCreation">
-        <Form
-          cardName={ nameInput }
-          cardDescription={ descriptionInput }
-          cardAttr1={ attr1Input }
-          cardAttr2={ attr2Input }
-          cardAttr3={ attr3Input }
-          cardImage={ imageInput }
-          cardRare={ rareInput }
-          cardTrunfo={ trunfoInput }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isButtonDisabled() }
-          onInputChange={ this.handleChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <div className="preview">
-          <h2>Pré-visualização</h2>
-          <Card
+      <>
+        <div className="cardCreation">
+          <Form
             cardName={ nameInput }
             cardDescription={ descriptionInput }
             cardAttr1={ attr1Input }
@@ -95,9 +81,27 @@ class App extends React.Component {
             cardImage={ imageInput }
             cardRare={ rareInput }
             cardTrunfo={ trunfoInput }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isButtonDisabled() }
+            onInputChange={ this.handleChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
+          <div className="preview">
+            <h2>Pré-visualização</h2>
+            <Card
+              cardName={ nameInput }
+              cardDescription={ descriptionInput }
+              cardAttr1={ attr1Input }
+              cardAttr2={ attr2Input }
+              cardAttr3={ attr3Input }
+              cardImage={ imageInput }
+              cardRare={ rareInput }
+              cardTrunfo={ trunfoInput }
+            />
+          </div>
         </div>
-      </div>
+        <Deck deckCards={ cardList } />
+      </>
     );
   }
 }

@@ -10,9 +10,12 @@ class Card extends React.Component {
         <p data-testid="name-card">{cardName}</p>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">{cardDescription}</p>
+        Vida
         <span data-testid="attr1-card">{cardAttr1}</span>
+        Ataque
         <span data-testid="attr2-card">{cardAttr2}</span>
-        <span data-testid="attr3-card">{cardAttr3}</span>
+        Energia
+        <span data-testid="attr3-card" style={ { marginRight: '0' } }>{cardAttr3}</span>
         <p data-testid="rare-card">{cardRare}</p>
         {cardTrunfo
           ? <p data-testid="trunfo-card">Super Trunfo</p>

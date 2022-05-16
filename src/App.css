@@ -28,6 +28,7 @@ form {
   background-color: #036b52;
   border: 8px white solid;
   border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px grey;
   color: white;
   height: 75%;
   margin: auto;
@@ -39,6 +40,10 @@ form {
 
 .card img {
   height: 40%;
+}
+
+.card span {
+  margin: 0 1rem 0 3px;
 }
 
 button {
