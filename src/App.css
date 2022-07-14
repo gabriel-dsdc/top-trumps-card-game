@@ -1,3 +1,8 @@
+:root {
+
+  --rarity-color: green;
+}
+
 .cardCreation {
   display: flex;
   height: 100vh;
@@ -24,26 +29,106 @@ form {
   text-align: center;
 }
 
+.preview > div {
+  margin: auto;
+}
+
+/* Card Component */
 .card {
-  background-color: #036b52;
-  border: 8px white solid;
+  background-color: var(--rarity-color);
+  border: 8px var(--rarity-color) solid;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px grey;
   color: white;
-  height: 75%;
-  margin: auto;
-  max-height: 508px;
-  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  height: 345px;
+  position: relative;
   text-align: center;
-  width: 45%;
+  width: 245px;
 }
 
-.card img {
-  height: 40%;
+.card-title {
+  font-size: 28px;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  text-shadow: 0 -1px 2px black , 1px 0 2px black , 0 1px 2px black , -1px 0 2px black;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
-.card span {
-  margin: 0 1rem 0 3px;
+.card-image__container {
+  border-top-left-radius: calc(8px - 5px);
+  border-top-right-radius: calc(8px - 5px);
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-image__container img {
+  width: 100%;
+}
+
+.card-rarity {
+  display: none;
+}
+
+.card-super-trunfo {
+  background-image: url('/src/assets/images/star-icon.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-weight: 700;
+  height: 40px;
+  line-height: 17px;
+  margin: 0;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-description {
+  background-color: white;
+  border-bottom-left-radius: calc(8px - 5px);
+  border-bottom-right-radius: calc(8px - 5px);
+  border-top: 8px var(--rarity-color) solid;
+  bottom: 0;
+  color: black;
+  font-size: 12px;
+  margin: 0;
+  padding-bottom: 15px;
+  position: absolute;
+  width: 100%;
+}
+
+.card-attr {
+  bottom: -20px;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.card-attr span {
+  align-items: center;
+  background-size: contain;
+  display: flex;
+  font-weight: 900;
+  height: 32px;
+  justify-content: center;
+  text-shadow: 0 -1px 2px black , 1px 0 2px black , 0 1px 2px black , -1px 0 2px black;
+  width: 32px;
+}
+
+.card-attr :nth-child( 1 ) {
+  background-image: url('./assets/images/emoji_raised-fist.svg');
+}
+
+.card-attr :nth-child( 2 ) {
+  background-image: url('./assets/images/emoji_comet.svg');
+}
+
+.card-attr :nth-child( 3 ) {
+  background-image: url('./assets/images/emoji_brain.svg');
 }
 
 button {

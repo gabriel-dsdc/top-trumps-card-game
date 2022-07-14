@@ -33,7 +33,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr1Input">
-            Vida&nbsp;&nbsp;
+            Força&nbsp;&nbsp;
             <input
               data-testid="attr1-input"
               id="attr1Input"
@@ -45,7 +45,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr2Input">
-            Ataque&nbsp;&nbsp;
+            Magia&nbsp;&nbsp;
             <input
               data-testid="attr2-input"
               id="attr2Input"
@@ -57,7 +57,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr3Input">
-            Energia&nbsp;&nbsp;
+            Inteligência&nbsp;&nbsp;
             <input
               data-testid="attr3-input"
               id="attr3Input"
