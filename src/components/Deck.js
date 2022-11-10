@@ -5,14 +5,20 @@ import Card from './Card';
 class Deck extends React.Component {
   state = {
     nameFilter: '',
+    rarityFilter: '',
+    trumpFilter: false,
   }
 
-  handleChange = ({ target: { id, value } }) => {
-    this.setState({ [id]: value });
+  handleChange = ({ target: { id, value, checked } }) => {
+    if (id !== 'trumpFilter') {
+      this.setState({ [id]: value });
+    } else {
+      this.setState({ [id]: checked });
+    }
   };
 
   render() {
-    const { nameFilter } = this.state;
+    const { nameFilter, rarityFilter, trumpFilter } = this.state;
     const { deckCards, handleDelete } = this.props;
     return (
       <section>
@@ -25,11 +31,45 @@ class Deck extends React.Component {
           value={ nameFilter }
           placeholder="Nome da carta"
           onChange={ this.handleChange }
+          disabled={ trumpFilter }
         />
+        <select
+          data-testid="rare-filter"
+          id="rarityFilter"
+          value={ rarityFilter }
+          onChange={ this.handleChange }
+          disabled={ trumpFilter }
+        >
+          <option defaultValue value="">todas</option>
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
+        </select>
+        <label htmlFor="trumpFilter">
+          <input
+            data-testid="trunfo-filter"
+            id="trumpFilter"
+            type="checkbox"
+            checked={ trumpFilter }
+            onChange={ this.handleChange }
+          />
+          Super Trunfo
+        </label>
         <div className="deck">
-          { deckCards.filter((card) => card.nameInput.includes(nameFilter))
-            .map((card) => (
-              <div key={ card.nameInput }>
+          { deckCards
+            .reduce((acc) => {
+              if (trumpFilter) {
+                acc = acc.filter((card) => card.trunfoInput === trumpFilter);
+              } else {
+                acc = acc.filter((card) => card.nameInput.includes(nameFilter));
+                if (rarityFilter) {
+                  acc = acc.filter((card) => card.rareInput === rarityFilter);
+                }
+              }
+              return acc;
+            }, [...deckCards])
+            .map((card, index) => (
+              <div key={ card.nameInput + index }>
                 <Card
                   cardName={ card.nameInput }
                   cardDescription={ card.descriptionInput }
