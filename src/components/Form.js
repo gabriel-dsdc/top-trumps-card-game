@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Form extends React.Component {
   render() {
@@ -116,7 +116,7 @@ class Form extends React.Component {
           <br />
           <button
             data-testid="save-button"
-            type="submit"
+            type="button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
           >

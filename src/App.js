@@ -53,8 +53,7 @@ class App extends React.Component {
   }
 
   isButtonDisabled = () => {
-    const { nameInput, descriptionInput, attr1Input,
-      attr2Input, attr3Input, imageInput, rareInput } = this.state;
+    const { attr1Input, attr2Input, attr3Input } = this.state;
 
     let isSaveButtonDisabled = true;
     const attrMaxValue = 90;
@@ -63,7 +62,8 @@ class App extends React.Component {
     const n2 = parseInt(attr2Input, 10);
     const n3 = parseInt(attr3Input, 10);
 
-    if (!nameInput || !descriptionInput || !imageInput || !rareInput) {
+    const STATE_LIMIT = 7;
+    if (Object.values(this.state).slice(0, STATE_LIMIT).includes('')) {
       isSaveButtonDisabled = true;
     } else if (n1 + n2 + n3 > attrTotalValue) {
       isSaveButtonDisabled = true;
@@ -74,7 +74,6 @@ class App extends React.Component {
     } else {
       isSaveButtonDisabled = false;
     }
-
     return isSaveButtonDisabled;
   };
 
@@ -84,16 +83,6 @@ class App extends React.Component {
 
     return (
       <>
-        {/* <Card
-          cardName="Victor von Doom"
-          cardDescription="A Latverian politician who serves as the Monarch and Supreme Leader for the Kingdom of Latveria. He is considered one of the most brilliant minds and scientists on the planet Earth. He is also a sorcerer with skills in magic matching the most powerful beings in the Universe, making him a potential candidate for Sorcerer Supreme."
-          cardAttr1={ 10 }
-          cardAttr2={ 10 }
-          cardAttr3={ 10 }
-          cardImage="https://th.bing.com/th/id/OIP.d0ieGGakWgYTHaGZ2DTQQwHaLP"
-          cardRare="Muito raro"
-          cardTrunfo
-        /> */}
         <div className="cardCreation">
           <Form
             cardName={ nameInput }
