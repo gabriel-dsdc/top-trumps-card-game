@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Form from './components/Form';
 import Card from './components/Card';
 import Deck from './components/Deck';
+import Form from './components/Form';
 
 class App extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class App extends React.Component {
     cardList: [],
   }
 
-  initialState = this.state;
+  initialState = { ...this.state };
 
   handleChange = ({ target: { id, value, checked } }) => {
     if (id !== 'trunfoInput') {

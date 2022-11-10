@@ -153,3 +153,8 @@ button:disabled {
 label {
   font-weight: 700;
 }
+
+/* Deck */
+.deck {
+  display: flex;
+}
